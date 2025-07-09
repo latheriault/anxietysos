@@ -2,50 +2,54 @@
 <html>
 <head>
   <title>Anxiety SOS</title>
-   <link rel="manifest" href="manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-    .then(function(registration) {
-      console.log('Service Worker registered with scope:', registration.scope);
-    }).catch(function(error) {
-      console.log('Service Worker registration failed:', error);
-    });
-  }
-</script>
   <style>
-    body { 
-      font-family: sans-serif; 
-      text-align: center; 
-      padding: 50px; 
-      background-color: #e6f0f7; /* soft blue */
-      color: #333; /* dark grey font */
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #e6f0f7;
+      color: #333;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      font-size: 1.2em; /* increased base font size */
+    }
+    .container {
+      max-width: 500px;
+      width: 100%;
     }
     h1 {
       margin-bottom: 5px;
+      font-size: 2em; /* increased heading size */
     }
     h2 {
       margin-top: 0;
       font-weight: normal;
       color: #555;
+      font-size: 1.2em; /* subtitle size */
     }
-    #technique { 
-      margin: 30px auto; 
-      font-size: 1.2em; 
-      max-width: 400px; 
+    #technique {
+      margin: 30px auto;
+      font-size: 1.4em; /* increased technique text size */
       background: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
     }
-    button { 
-      font-size: 1em; 
-      padding: 12px 25px; 
+    button {
+      font-size: 1.2em; /* increased button text size */
+      padding: 12px 25px;
       border: none;
       border-radius: 8px;
       box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
       cursor: pointer;
-      background-color: #f7c59f; /* soft orange */
+      background-color: #f7c59f;
+      margin-top: 20px;
     }
     button:hover {
       opacity: 0.9;
@@ -56,16 +60,28 @@
       color: #666;
     }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+    }
+  </script>
 </head>
 <body>
-  <h1>Anxiety SOS</h1>
-  <h2>Instant CBT relief</h2>
-  <div id="technique">Tap the button for a CBT technique.</div>
-  <button onclick="showTechnique()">Show Me One</button>
-
-  <footer>
-    © 2025 Lisa A. Theriault, AgeingUp. All rights reserved. For personal use only. No reproduction, distribution, or commercial use without permission.
-  </footer>
+  <div class="container">
+    <h1>Anxiety SOS</h1>
+    <h2>Instant CBT relief</h2>
+    <div id="technique">Tap the button for a CBT technique.</div>
+    <button onclick="showTechnique()">Show Me One</button>
+    <footer>
+      © 2025 Lisa A. Theriault, AgeingUp. All rights reserved. For personal use only. No reproduction, distribution, or commercial use without permission.
+    </footer>
+  </div>
 
   <script>
     const techniques = [
@@ -91,4 +107,3 @@
   </script>
 </body>
 </html>
-
