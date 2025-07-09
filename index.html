@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Anxiety SOS</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      text-align: center; 
+      padding: 50px; 
+      background-color: #f0f4f8;
+    }
+    h1 {
+      margin-bottom: 5px;
+    }
+    h2 {
+      margin-top: 0;
+      font-weight: normal;
+      color: #555;
+    }
+    #technique { 
+      margin: 30px auto; 
+      font-size: 1.2em; 
+      max-width: 400px; 
+    }
+    button { 
+      font-size: 1em; 
+      padding: 10px 20px; 
+    }
+  </style>
+</head>
+<body>
+  <h1>Anxiety SOS</h1>
+  <h2>Instant CBT relief</h2>
+  <div id="technique">Tap the button for a CBT technique.</div>
+  <button onclick="showTechnique()">Show Me One</button>
+
+  <script>
+    const techniques = [
+      "Listen to music",
+      "Belly breathe",
+      "Wear noise cancelling headset when overstimulated by loud noise",
+      "Get fresh air or go for a walk",
+      "Remind yourself that anxiety is just an uncomfortable feeling that will pass"
+    ];
+
+    function showTechnique() {
+      const randomIndex = Math.floor(Math.random() * techniques.length);
+      document.getElementById('technique').innerText = techniques[randomIndex];
+    }
+  </script>
+</body>
+</html>
