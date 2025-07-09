@@ -7,7 +7,8 @@
       font-family: sans-serif; 
       text-align: center; 
       padding: 50px; 
-      background-color: #f0f4f8;
+      background-color: #e6f0f7; /* soft blue */
+      color: #333; /* dark grey font */
     }
     h1 {
       margin-bottom: 5px;
@@ -21,10 +22,27 @@
       margin: 30px auto; 
       font-size: 1.2em; 
       max-width: 400px; 
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
     }
     button { 
       font-size: 1em; 
-      padding: 10px 20px; 
+      padding: 12px 25px; 
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+      cursor: pointer;
+      background-color: #f7c59f; /* soft orange */
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.8em;
+      color: #666;
     }
   </style>
 </head>
@@ -34,13 +52,25 @@
   <div id="technique">Tap the button for a CBT technique.</div>
   <button onclick="showTechnique()">Show Me One</button>
 
+  <footer>
+    © 2025 Lisa A. Theriault, AgeingUp. All rights reserved. For personal use only. No reproduction, distribution, or commercial use without permission.
+  </footer>
+
   <script>
     const techniques = [
       "Listen to music",
       "Belly breathe",
       "Wear noise cancelling headset when overstimulated by loud noise",
       "Get fresh air or go for a walk",
-      "Remind yourself that anxiety is just an uncomfortable feeling that will pass"
+      "Remind yourself that anxiety is just an uncomfortable feeling that will pass",
+      "Box breathing (4 slow breaths in, hold for 4, exhale for 4)",
+      "Do a body scan to find sources of discomfort and relax into them",
+      "Let go of the fear of anxiety",
+      "Avoid doom scrolling – the algorithm will only feed you more",
+      "Try Progressive Muscle Relaxation Exercises",
+      "Write down what you're feeling without judgment or labels",
+      "Remind yourself: You're not a failure. Anxiety is a disorder and is not your fault",
+      "Ground yourself in the present by noticing the air temperature, objects around you, identify sounds that you hear, accept and breathe into the moment"
     ];
 
     function showTechnique() {
@@ -50,3 +80,4 @@
   </script>
 </body>
 </html>
+
