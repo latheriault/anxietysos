@@ -1,83 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Instant CBT Calm</title>
+
   <style>
     html, body {
       height: 100%;
       margin: 0;
-      font-family: sans-serif;
-      background-color: #e6f0f7;
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #dfefff, #f7f3ff);
       color: #333;
-    }
-    body {
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
       padding: 20px;
       box-sizing: border-box;
-      font-size: 2.1669em; /* increased base font size */
+      text-align: center;
     }
+
     .container {
       max-width: 500px;
       width: 100%;
+      background: #ffffffdd;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
+
     h1 {
-      margin-bottom: 5px;
-      font-size: 2.25em; /* increased heading size */
+      font-size: 2em;
+      margin-bottom: 0.3em;
+      color: #2c3e50;
     }
+
     h2 {
-      margin-top: 0;
-      font-weight: normal;
-      color: #555;
-      font-size: 1.2em; /* subtitle size */
-    }
-    #technique {
-      margin: 30px auto;
-      font-size: 2.0em; /* increased technique text size */
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-    }
-    button {
-      font-size: 1.5em; /* increased button text size */
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
-      cursor: pointer;
-      background-color: #f7c59f;
-      margin-top: 20px;
-    }
-    button:hover {
-      opacity: 0.9;
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 0.8em;
+      font-weight: 400;
+      font-size: 1.1em;
       color: #666;
+      margin-top: 0;
+    }
+
+    #technique {
+      margin: 30px 0;
+      font-size: 1.25em;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      line-height: 1.5;
+      color: #444;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.1s ease;
+      margin: 8px 0;
+      width: 100%;
+      max-width: 320px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #showBtn {
+      background: linear-gradient(145deg, #a7d6ff, #d4c4f7);
+      color: #333;
+    }
+    #showBtn:hover {
+      background: linear-gradient(145deg, #bde4ff, #e3d4ff);
+      transform: translateY(-2px);
+    }
+    #showBtn:active {
+      transform: scale(0.98);
+    }
+
+    #shareBtn {
+      background: #89c9b8;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    #shareBtn:hover {
+      background: #a6d3c5;
+    }
+    #shareBtn:active {
+      transform: scale(0.98);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.75em;
+      color: #888;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 1em;
+      }
+      button {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
     }
   </style>
-  <link rel="manifest" href="manifest.json">
+
+  <link rel="manifest" href="manifest.json" />
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
-      .then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      }).catch(function(error) {
-        console.log('Service Worker registration failed:', error);
-      });
+        .then(function (registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        }).catch(function (error) {
+          console.log('Service Worker registration failed:', error);
+        });
     }
   </script>
 </head>
+
 <body>
   <div class="container">
-    <h1>Instant Calm CBT</h1>
-    <h2>Instant CBT relief</h2>
+    <h1>Instant CBT Calm</h1>
+    <h2>Tap below for immediate grounding</h2>
+
     <div id="technique">Tap the button for a CBT technique.</div>
-    <button onclick="showTechnique()">Show Me One</button>
+
+    <button id="showBtn" onclick="showTechnique()">Show Me One</button>
+
+    <button id="shareBtn">Share This App</button>
+
     <footer>
       © 2025 Lisa A. Theriault, AgeingUp. All rights reserved. For personal use only. No reproduction, distribution, or commercial use without permission.
     </footer>
@@ -85,25 +145,58 @@
 
   <script>
     const techniques = [
-      "Listen to music",
-      "Belly breathe",
-      "Wear noise cancelling headset when overstimulated by loud noise",
-      "Get fresh air or go for a walk",
-      "Remind yourself that anxiety is just an uncomfortable feeling that will pass",
-      "Box breathing (4 slow breaths in, hold for 4, exhale for 4)",
-      "Do a body scan to find sources of discomfort and relax into them",
-      "Let go of the fear of anxiety",
-      "Avoid doom scrolling – the algorithm will only feed you more",
-      "Try Progressive Muscle Relaxation Exercises",
-      "Write down what you're feeling without judgment or labels",
-      "Remind yourself: You're not a failure. Anxiety is a disorder and is not your fault",
-      "Ground yourself in the present by noticing the air temperature, objects around you, identify sounds that you hear, accept and breathe into the moment"
+      "Take a deep breath and name five things you see around you.",
+      "Say to yourself: 'These feelings will pass. I am safe in this moment.'",
+      "Stretch your arms high and exhale slowly.",
+      "Write down what you're feeling. No judgment—just observe.",
+      "Gently move your body: walk, sway, or stretch to release tension.",
+      "Remind yourself: Thoughts are not facts. Breathe into your truth.",
+      "Feel your feet on the ground. You're here, and you're okay.",
+      "Picture a safe, peaceful place and stay there in your mind for a minute.",
+      "Say this out loud: 'I am allowed to feel this and let it go.'",
+      "Smile, even slightly. Your brain can follow your body's cue.",
+      "Remind yourself: You’re not broken—your brain is just alert.",
+      "Touch something soft and describe its texture to yourself.",
+      "Open a window or step outside. Fresh air is medicine.",
+      "Try box breathing: Inhale 4, hold 4, exhale 4, hold 4.",
+      "These feelings of anxiety will pass. For now, just breathe.",
+      "Be gentle with yourself today. Engage in an activity you love, even if it's for 10 minutes.",
+      "Wrap yourself in a weighted blanket if that helps your anxiety.",
+      "Putter around the house while listening to your favorite music.",
+      "Think about one thing you're looking forward to, no matter how big or small. Write notes about the upcoming event to take your mind off the present moment.",
+      "Make a plan to do something nice for someone else today.",
+      "Get up and move around to get the blood flowing.",
+      "Pay attention to your body cues: Are you hungry? Thirsty? Take care of your immediate needs.",
+      "Wear noise-cancelling headset if noise is distressing you.",
+      "This anxiety may make you feel stuck, but remind yourself that you are not. You can move, change the atmosphere, or reset your nervous system with deep belly breathing or exercise.",
+      "Use a stress ball and concentrate on how it feels in your hands. Pay attention to the sensations it offers.",
+      "Think about how high your anxiety really is on a scale of 1 to 10, with 10 being extreme. Can you hold off on taking Ativan or having a drink before the anxiety subsides?",
+      "Instead of taking Ativan (or some other drug), consider just having it nearby for comfort. You might find that the anxiety goes away quickly and realize you didn't need to take anything at all.",
+      "You're not a failure if you need to take something for anxiety. Tomorrow is another day to continue working on your cognitive behavioral therapy toolbox."
     ];
 
     function showTechnique() {
       const randomIndex = Math.floor(Math.random() * techniques.length);
       document.getElementById('technique').innerText = techniques[randomIndex];
     }
+
+    const shareBtn = document.getElementById('shareBtn');
+    shareBtn.addEventListener('click', async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Instant CBT Calm',
+            text: 'Check out this simple app with calming CBT techniques for anxiety relief!',
+            url: window.location.href
+          });
+          console.log('Thanks for sharing!');
+        } catch (err) {
+          console.error('Share failed:', err.message);
+        }
+      } else {
+        alert('Sharing is not supported on this device. You can copy the link and share it manually!');
+      }
+    });
   </script>
 </body>
 </html>
